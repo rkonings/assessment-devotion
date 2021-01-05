@@ -37,6 +37,7 @@ interface Sidebar {
     className?: string;
     isOpen?: boolean;
     children: string | JSX.Element | JSX.Element[];
+    closeHandler: () => void;
 }
 
 export const SidebarBody = styled.div`
@@ -48,22 +49,17 @@ export const SidebarBody = styled.div`
     background: #ffffff;
 `;
 
-const Sidebar = ({ className, isOpen, children }: Sidebar) => {
-    const [open, setOpen] = React.useState<boolean>();
+const Sidebar = ({ className, isOpen, children, closeHandler }: Sidebar) => {
     const focusTrap = useFocusTrap();
-
-    React.useEffect(() => {
-        setOpen(isOpen);
-    }, [isOpen]);
 
     return (
         <div className={className}>
-            {open && (
+            {isOpen && (
                 <Overlay>
-                    <ClickAway onClick={() => setOpen(false)} />
+                    <ClickAway onClick={() => closeHandler()} />
                     <SidebarBody ref={focusTrap}>
                         {children}
-                        <Close onClick={() => setOpen(false)}>
+                        <Close onClick={() => closeHandler()}>
                             <CloseIcon />
                         </Close>
                     </SidebarBody>
