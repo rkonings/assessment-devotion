@@ -59,6 +59,7 @@ export default () => {
             </Page>
             <WishList
                 isOpen={sidebarOpen}
+                closeHandler={() => setSidebarOpen(false)}
                 products={PRODUCTS}
                 wishListItems={wishListItems}
                 onChange={(items) => setWishListItems(items)}

@@ -36,6 +36,7 @@ storiesOf('Wishlist', module)
                 products={products}
                 wishListItems={new Map(Object.entries({ 1: 10 }))}
                 onChange={(items) => console.log(items)}
+                closeHandler={action('close')}
             />
         );
     });

@@ -8,6 +8,8 @@ interface WishList {
     wishListItems: Map<number | string, number>;
     products: Product[];
     onChange: (items: Map<number | string, number>) => void;
+    isOpen?: boolean;
+    closeHandler: () => void;
 }
 
 const getWishListItemProduct = (id: number | string, products: Product[]) => {
@@ -19,7 +21,13 @@ const List = styled.div`
     padding: 2em 1em;
 `;
 
-export default ({ wishListItems, products, onChange }: WishList) => {
+export default ({
+    wishListItems,
+    products,
+    onChange,
+    isOpen,
+    closeHandler,
+}: WishList) => {
     const listItems: JSX.Element[] = [];
 
     wishListItems.forEach((value, key) => {
@@ -52,7 +60,7 @@ export default ({ wishListItems, products, onChange }: WishList) => {
     });
 
     return (
-        <Sidebar isOpen={true}>
+        <Sidebar closeHandler={closeHandler} isOpen={isOpen}>
             <List>{listItems}</List>
         </Sidebar>
     );
