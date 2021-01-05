@@ -30,6 +30,10 @@ export const WishListButton = styled(
     &:focus {
         outline: none;
     }
+
+    &:hover {
+        background: #2db775;
+    }
 `;
 
 export const ProductTitle = styled.div`
@@ -84,5 +88,9 @@ export default styled(
 )`
     display: flex;
     width: 250px;
+    box-sizing: border-box;
+    height: 300px;
+    margin: 0 15px;
+
     flex-direction: column;
 `;
