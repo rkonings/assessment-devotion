@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import GlobalStyle from '../GlobalStyle';
 import Page from './Layout/Page';
 import Header from './Layout/Header';
-import Sidebar from './Layout/Sidebar';
+import WishList from './WishList/WishList';
 import ProductOverview from './Product/ProductOverview';
 import ProductTile from './Product/ProductTile';
 
@@ -29,21 +29,40 @@ const PRODUCTS = [
     },
 ];
 
-export default () => (
-    <>
-        <GlobalStyle />
-        <Header />
-        <Page>
-            <ProductOverview>
-                {PRODUCTS.map((product) => (
-                    <ProductTile
-                        onWishList={false}
-                        toggleWishList={() => console.log({ toggle: product })}
-                        product={product}
-                    />
-                ))}
-            </ProductOverview>
-        </Page>
-        <Sidebar />
-    </>
-);
+export default () => {
+    const [wishListItems, setWishListItems] = useState(new Map());
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    return (
+        <>
+            <GlobalStyle />
+            <Header />
+            <button onClick={() => setSidebarOpen(true)}>WishList</button>
+            <Page>
+                <ProductOverview>
+                    {PRODUCTS.map((product) => (
+                        <ProductTile
+                            onWishList={wishListItems.has(product.id)}
+                            toggleWishList={() => {
+                                const changedItems = new Map(wishListItems);
+                                if (wishListItems.has(product.id)) {
+                                    changedItems.delete(product.id);
+                                } else {
+                                    changedItems.set(product.id, 1);
+                                }
+                                setWishListItems(changedItems);
+                            }}
+                            product={product}
+                        />
+                    ))}
+                </ProductOverview>
+            </Page>
+            <WishList
+                isOpen={sidebarOpen}
+                products={PRODUCTS}
+                wishListItems={wishListItems}
+                onChange={(items) => setWishListItems(items)}
+            />
+        </>
+    );
+};
