@@ -51,6 +51,7 @@ export default () => {
                 <ProductOverview>
                     {products.map((product) => (
                         <ProductTile
+                            key={product.id}
                             onWishList={wishListItems.has(product.id)}
                             toggleWishList={() => {
                                 const changedItems = new Map(wishListItems);

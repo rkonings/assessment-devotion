@@ -35,6 +35,7 @@ export default ({
         if (product) {
             listItems.push(
                 <WishListItem
+                    key={product.id}
                     price={product.price}
                     removeHandler={() => {
                         const changedItems = new Map<number | string, number>(
