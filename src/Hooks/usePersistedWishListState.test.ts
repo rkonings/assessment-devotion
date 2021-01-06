@@ -22,7 +22,7 @@ describe('usePersistedWishListState', () => {
         const [state] = result.current;
 
         expect(state).toBeInstanceOf(Map);
-        expect((state as Map<string | number, number>).size).toBe(0);
+        expect(state.size).toBe(0);
 
         localStorageSpyGetItem.mockRestore();
     });
@@ -44,7 +44,7 @@ describe('usePersistedWishListState', () => {
         const [state] = result.current;
 
         expect(state).toBeInstanceOf(Map);
-        expect((state as Map<string | number, number>).size).toBe(2);
+        expect(state.size).toBe(2);
 
         localStorageSpyGetItem.mockRestore();
     });
@@ -66,14 +66,11 @@ describe('usePersistedWishListState', () => {
         const { result } = setUp();
         const [state, setState] = result.current;
 
-        const newState = new Map(state as Map<string, number | number>);
+        const newState = new Map(state);
 
         act(() => {
             newState.set('3', 1);
-
-            if (typeof setState === 'function') {
-                setState(newState);
-            }
+            setState(newState);
         });
 
         expect(localStorageSpySetItem).toBeCalled();
