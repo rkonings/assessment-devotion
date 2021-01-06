@@ -36,9 +36,13 @@ export default () => {
     return (
         <>
             <GlobalStyle />
-            <Header />
-            <button onClick={() => setSidebarOpen(true)}>WishList</button>
+
             <Page>
+                <Header>
+                    <button onClick={() => setSidebarOpen(true)}>
+                        WishList
+                    </button>
+                </Header>
                 <ProductOverview>
                     {PRODUCTS.map((product) => (
                         <ProductTile
