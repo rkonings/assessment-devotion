@@ -56,7 +56,7 @@ export default styled(({ className, children }: Header) => (
     </div>
 ))`
     height: 60px;
-    width: 1200px;
+    width: 100%;
     border-bottom: 1px solid #959595;
     display: flex;
     justify-content: center;
@@ -64,10 +64,15 @@ export default styled(({ className, children }: Header) => (
     position: fixed;
     top: 0;
     background: #ffffff;
-    margin-top: 20px;
+    padding-top: 20px;
 
     ${Logo} {
         height: 80%;
         margin-right: 2em;
+    }
+
+    @media screen and (min-width: 768px) {
+        max-width: 1000px;
+        margin: 0px auto 0 auto;
     }
 `;
