@@ -70,7 +70,6 @@ describe('usePersistedWishListState', () => {
 
         act(() => {
             newState.set('3', 1);
-            console.log({ newState });
 
             if (typeof setState === 'function') {
                 setState(newState);

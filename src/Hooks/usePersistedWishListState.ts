@@ -11,7 +11,7 @@ export default () => {
     );
 
     useEffect(() => {
-        const newState = Array.from(state.values());
+        const newState = Array.from(state.entries());
         localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
     }, [state]);
 
