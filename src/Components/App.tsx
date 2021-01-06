@@ -8,6 +8,7 @@ import ProductOverview from './Product/ProductOverview';
 import ProductTile from './Product/ProductTile';
 import WishListButton from './WishList/WishListButton';
 import { getProducts } from '../Models/Product';
+import usePersistedWishListState from '../Hooks/usePersistedWishListState';
 
 // const PRODUCTS = [
 //     {
@@ -34,7 +35,7 @@ import { getProducts } from '../Models/Product';
 export default () => {
     const products = getProducts();
 
-    const [wishListItems, setWishListItems] = useState(new Map());
+    const [wishListItems, setWishListItems] = usePersistedWishListState();
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
