@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { Product } from './interfaces';
+import Price from '../Formatter/Price';
 
 interface WishListButton {
     onWishList: boolean;
@@ -81,7 +82,9 @@ export default styled(
                 />
                 <ProductCategory>{category}</ProductCategory>
                 <ProductTitle>{title}</ProductTitle>
-                <ProductPrice>&euro; {price}</ProductPrice>
+                <ProductPrice>
+                    <Price>{price}</Price>
+                </ProductPrice>
             </div>
         );
     }
