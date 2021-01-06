@@ -6,6 +6,8 @@ import {
     ProductTitle,
 } from '../Product/ProductTile';
 
+import Price from '../Formatter/Price';
+
 export const WishListProductImage = styled.div`
     display: flex;
     justify-content: center;
@@ -116,7 +118,9 @@ export default styled(
             <ProductInfo>
                 <ProductCategory>{category}</ProductCategory>
                 <ProductTitle>{title}</ProductTitle>
-                <ProductPrice>&euro; {price}</ProductPrice>
+                <ProductPrice>
+                    <Price>{price}</Price>
+                </ProductPrice>
                 <Remove removeHandler={removeHandler} />
             </ProductInfo>
 
