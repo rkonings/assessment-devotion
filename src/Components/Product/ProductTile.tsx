@@ -49,8 +49,8 @@ export const ProductImage = styled.div`
     justify-content: center;
     align-items: center;
     img {
-        width: 150px;
-        height: auto;
+        width: auto;
+        height: 120px;
     }
     margin-bottom: 0.5em;
 `;
