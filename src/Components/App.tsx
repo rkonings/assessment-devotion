@@ -6,6 +6,7 @@ import Header from './Layout/Header';
 import WishList from './WishList/WishList';
 import ProductOverview from './Product/ProductOverview';
 import ProductTile from './Product/ProductTile';
+import WishListButton from './WishList/WishListButton';
 
 const PRODUCTS = [
     {
@@ -36,9 +37,13 @@ export default () => {
     return (
         <>
             <GlobalStyle />
-            <Header />
-            <button onClick={() => setSidebarOpen(true)}>WishList</button>
             <Page>
+                <Header>
+                    <WishListButton
+                        wishListItems={wishListItems}
+                        onClick={() => setSidebarOpen(true)}
+                    />
+                </Header>
                 <ProductOverview>
                     {PRODUCTS.map((product) => (
                         <ProductTile
