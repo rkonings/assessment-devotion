@@ -47,6 +47,10 @@ export const SidebarBody = styled.div`
     display: flex;
     flex-direction: column;
     background: #ffffff;
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 const Sidebar = ({ className, isOpen, children, closeHandler }: Sidebar) => {
@@ -57,7 +61,7 @@ const Sidebar = ({ className, isOpen, children, closeHandler }: Sidebar) => {
             {isOpen && (
                 <Overlay>
                     <ClickAway onClick={() => closeHandler()} />
-                    <SidebarBody ref={focusTrap}>
+                    <SidebarBody tabIndex={0} ref={focusTrap}>
                         {children}
                         <Close onClick={() => closeHandler()}>
                             <CloseIcon />
